@@ -1,9 +1,10 @@
 <template>
-  <v-card width=340px class = "ma-1 pa-1" hover @mousedown.stop :elevation="5" :to="'/blogs/' + blog.id" > <!-- dark -->
+  <v-card width=340px height=360px class = "ma-1 pa-1" hover @mousedown.stop :elevation="5" :to="'/blogs/' + blog.id" > <!-- dark -->
     <v-container>
       
         <div>
           <v-img :src = "blog.blog_image" width="100%"/><!-- v-img covers larger area than only img tag -->
+          <!--<v-img :src = "blog.blog_image" width="100%" height="100%"/>-->
           <!-- <v-card-title color = "black" x-small>{{event.title}}</v-card-title> -->
           <v-btn color="orange" x-small>
             {{ blog.blog_name }}

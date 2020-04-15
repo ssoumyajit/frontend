@@ -1,5 +1,5 @@
 <template>
-  <v-card width=340px class = "ma-1 pa-1" hover @mousedown.stop :elevation="5" :to="'/artists/' + artist.id" > <!-- dark -->
+  <v-card width=340px height=360px class = "ma-1 pa-1" hover @mousedown.stop :elevation="5" :to="'/artists/' + artist.id" > <!-- dark -->
     <v-container>
       
         <div>

@@ -23,7 +23,27 @@
            <img :src="artist.artist_image" height = "45%" width="45%" class="centerImage">
         </center>
         
-        <div><p class="text-center">{{ artist.country}}</p></div>
+        <div>
+            <p class="text-center">{{ artist.country}}</p>
+        </div>
+
+        <br>
+        
+        <div>
+            <div>
+                <h6 class = "display-1 ma-4 d-flex justify-center ">List of Blogs</h6>
+                
+                <div class = "display-1 ma-4 d-flex justify-center ">
+                  <div v-for="blog in blogs" :key ="blog.index">
+                    <BlogCard :blog="blog" ></BlogCard>  <!-- can add class = "ma-1 pa-1" -->
+                  </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+    
         
 
     </div>
@@ -33,6 +53,7 @@
 <script>
 //import EventNavBar from '@/pages/event/_id/EventNavBar.vue'
 import EventService from '@/services/EventService.js'
+import BlogCard from '@/components/BlogCard.vue'
 export default {
     //props: ['event'],
     head() {
@@ -49,14 +70,22 @@ export default {
     },
     async asyncData({error, params}) {
       try {
-        const response = await EventService.getArtist(params.id)
+        let artist_response = await EventService.getArtist(params.id)
+        let blogs_response = await EventService.getBlogs()
+
         return {
-        artist: response.data,  //event ...... NOT events here , dont miss this one..
+
+            artist: artist_response.data,  //event ...... NOT events here , dont miss this one..
+            blogs: blogs_response.data
         }
       } catch (e) {
-        error({statusCode:503, message: "unable to fetch data for the artist#"  + params.id })
+        error({statusCode:503,  message: err.message})
         }
     },
+    
+    components: {
+        BlogCard
+    }
 }
 
 </script>
