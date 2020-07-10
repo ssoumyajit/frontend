@@ -13,6 +13,7 @@
 
 <script>
 import ArtistCard from '@/components/ArtistCard.vue'
+import EventService from '@/services/EventService.js'
 export default {
   head() {  //head function (a property of vue-meta), returns an object
     return {
