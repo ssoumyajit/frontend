@@ -12,22 +12,11 @@ const apiClient1 = axios.create({
 
 
 export default {
-    getEvents() {
-        return apiClient1.get('/events')
-    },
-    getEvent(id) {
-        return apiClient1.get('/events/' + id)
-    },
+    
     getArtists() {
         return apiClient1.get('/artists')
     },
     getArtist(id) {
         return apiClient1.get('/artists/' + id)
     },
-    getBlogs() {
-        return apiClient1.get('/blogs')
-    },
-    getBlog(id) {
-        return apiClient1.get('/blogs/' + id)
-    }
 }

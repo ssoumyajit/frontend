@@ -77,7 +77,7 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,
@@ -87,7 +87,13 @@ export default {
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
           success: colors.green.accent3
-        }
+        },
+        light: {
+          primary: '#3f51b5',
+          secondary: '#b0bec5',
+          accent: '#8c9eff',
+          error: '#b71c1c',
+        },
       }
     }
   },
@@ -105,3 +111,8 @@ export default {
     transpile: [/^vue2-google-maps($|\/)/]
   },
 }
+
+// sometimes u cant see nuxt home page even if 
+// it is running ---- change the network and port number in the package.json file 
+//https://stackoverflow.com/questions/53909900/my-first-nuxt-js-app-is-refusing-to-run-on-localhost3000 
+// also check https://nuxtjs.org/faq/host-port/

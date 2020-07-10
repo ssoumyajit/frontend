@@ -3,10 +3,7 @@
     <v-app-bar color="deep-purple accent-3">
       
       <v-btn to = '/' text>InmyGroove</v-btn>  <!-- nuxt-link instead of router-link-->
-      <v-btn text to = '/events'>Eventlist</v-btn> |
-      <v-btn text to = '/artists'>Artists</v-btn> |
-      <v-btn text to = '/blogs'>Blogs</v-btn>
-      <v-btn text to = '/events/create'>Create</v-btn>
+      <v-btn text to = '/artists'>Artists</v-btn>
       <v-spacer/>
       
     </v-app-bar>

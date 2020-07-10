@@ -12,7 +12,6 @@
                   <!--- v-flex is centered now, but we need to center button inside v-flex -->
                       <div class="text-xs-center">
                           <v-btn outlined :to= "`/artists/${artist.id}/activities`">Activities</v-btn>
-                          <v-btn outlined :to= "`/artists/${artist.id}/my_blogs`">Blogs</v-btn>
                       </div>
                   </v-flex>
               </v-layout>
@@ -41,21 +40,15 @@
                 
             </div>
         </div>
-        
 
-    
-        
 
     </div>
   </v-app>
 </template>
 
 <script>
-//import EventNavBar from '@/pages/event/_id/EventNavBar.vue'
 import EventService from '@/services/EventService.js'
-import BlogCard from '@/components/BlogCard.vue'
 export default {
-    //props: ['event'],
     head() {
         return {
             title: this.artist.id,     //do not miss "this"
@@ -71,12 +64,8 @@ export default {
     async asyncData({error, params}) {
       try {
         let artist_response = await EventService.getArtist(params.id)
-        let blogs_response = await EventService.getBlogs()
-
         return {
-
             artist: artist_response.data,  //event ...... NOT events here , dont miss this one..
-            blogs: blogs_response.data
         }
       } catch (e) {
         error({statusCode:503,  message: err.message})
@@ -84,7 +73,7 @@ export default {
     },
     
     components: {
-        BlogCard
+       
     }
 }
 
