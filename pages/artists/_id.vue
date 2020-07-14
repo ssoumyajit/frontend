@@ -78,7 +78,7 @@ export default {
             artist: artist_response.data,  //event ...... NOT events here , dont miss this one..
             blogs: blogs_response.data
         }
-      } catch (e) {
+      } catch (err) {
         error({statusCode:503,  message: err.message})
         }
     },
