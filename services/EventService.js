@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const apiClient1 = axios.create({
-    baseURL: 'http://localhost:8000/api',  //3000 earlier
+    baseURL: 'http://localhost:8000/api/v1',  //3000 earlier
     withCredentials: false,
     headers: {
         Accept: 'application/json',
@@ -14,9 +14,9 @@ const apiClient1 = axios.create({
 export default {
     
     getArtists() {
-        return apiClient1.get('/artists')
+        return apiClient1.get('/portfolio')
     },
     getArtist(id) {
-        return apiClient1.get('/artists/' + id)
+        return apiClient1.get('/portfolio/' + id)
     },
 }

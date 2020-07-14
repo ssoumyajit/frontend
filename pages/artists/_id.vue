@@ -2,45 +2,23 @@
   <v-app>
     <div>
         <nuxt-child :artist="artist"/>
-        <h2 class="text-center">{{artist.name}}</h2>
-        <v-content>
-          <!--- pick-up screen height so we can center vertically -->
-          <v-container fill-height>
-              <!--- vertical and horizontal alignment -->
-              <v-layout align-center justify-center>
-                  <v-flex xs6>
-                  <!--- v-flex is centered now, but we need to center button inside v-flex -->
-                      <div class="text-xs-center">
-                          <v-btn outlined :to= "`/artists/${artist.id}/activities`">Activities</v-btn>
-                      </div>
-                  </v-flex>
-              </v-layout>
-          </v-container>
-        </v-content>
+        <h2 class="text-center">{{artist.artist_name}}</h2>
+        <SemiNavBar></SemiNavBar>
         
         <center>
-           <img :src="artist.artist_image" height = "45%" width="45%" class="centerImage">
+            <v-img :src = "artist.artist_image" width="50%" class="centerImage"/>
         </center>
-        
-        <div>
-            <p class="text-center">{{ artist.country}}</p>
-        </div>
 
-        <br>
-        
         <div>
-            <div>
-                <h6 class = "display-1 ma-4 d-flex justify-center ">List of Blogs</h6>
-                
-                <div class = "display-1 ma-4 d-flex justify-center ">
-                  <div v-for="blog in blogs" :key ="blog.index">
-                    <BlogCard :blog="blog" ></BlogCard>  <!-- can add class = "ma-1 pa-1" -->
-                  </div>
-                </div>
-                
-            </div>
+            <p class="text-center"> {{ artist.bio }}</p>
+            <p class="text-center">{{ artist.country }}</p>
         </div>
-
+        
+        <!--<div class="d-flex flex-wrap">-->
+        <div v-for = "gallery in artist.gallery" :key = "gallery.index">
+           <img :src="gallery.g_upload_photo" height = "20%" width="20%" class="centerImage">
+        </div>
+        <!--</div>-->
 
     </div>
   </v-app>
@@ -48,7 +26,12 @@
 
 <script>
 import EventService from '@/services/EventService.js'
+import SemiNavBar from '@/components/SemiNavBar.vue'
+
 export default {
+    components:{
+        SemiNavBar
+    },
     head() {
         return {
             title: this.artist.id,     //do not miss "this"
@@ -76,5 +59,8 @@ export default {
        
     }
 }
-
 </script>
+
+<style scoped>
+
+</style>

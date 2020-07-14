@@ -6,7 +6,7 @@
           <v-img :src = "artist.artist_image" width="100%"/><!-- v-img covers larger area than only img tag -->
           <!-- <v-card-title color = "black" x-small>{{event.title}}</v-card-title> -->
           <v-btn color="orange" x-small>
-            {{ artist.name }}
+            {{ artist.artist_name }}
           </v-btn>
 
           <v-btn  icon >

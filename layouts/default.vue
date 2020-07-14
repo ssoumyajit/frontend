@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar color="deep-purple accent-3">
+    <v-app-bar color="deep-purple accent-3" app>
       
       <v-btn to = '/' text>InmyGroove</v-btn>  <!-- nuxt-link instead of router-link-->
       <v-btn text to = '/artists'>Artists</v-btn>
