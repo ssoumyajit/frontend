@@ -13,9 +13,11 @@
                   <!--- v-flex is centered now, but we need to center button inside v-flex -->
                       <div class="text-xs-center">
                           <v-btn outlined :to= "`/artists/${artist.id}/`">About</v-btn>
-                          <v-btn outlined :to= "`/artists/${artist.id}/activities`">Activities</v-btn>
-                          <v-btn outlined :to= "`/artists/${artist.id}/each1teach1`">Each 1 Teach 1</v-btn>
-                          <v-btn outlined :to= "`/artists/${artist.id}/mythoughts`">My Blogs</v-btn>
+                          <v-btn outlined :to= "`/artists/${artist.id}/sharing`">Sharing</v-btn>
+                          <!--
+                            <v-btn outlined :to= "`/artists/${artist.id}/activities`">Activities</v-btn>                        
+                            <v-btn outlined :to= "`/artists/${artist.id}/mythoughts`">My Blogs</v-btn>
+                          -->
                       </div>
                   </v-flex>
               </v-layout>
