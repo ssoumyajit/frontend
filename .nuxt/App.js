@@ -1,38 +1,23 @@
 import Vue from 'vue'
 
-import {
-  getMatchedComponentsInstances,
-  promisify,
-  globalHandleError
-} from './utils'
-
+import { getMatchedComponentsInstances, getChildrenComponentInstancesUsingFetch, promisify, globalHandleError, urlJoin, sanitizeComponent } from './utils'
 import NuxtError from '../layouts/error.vue'
 import NuxtLoading from './components/nuxt-loading.vue'
 import NuxtBuildIndicator from './components/nuxt-build-indicator'
 
+import '../node_modules/bootstrap/dist/css/bootstrap.css'
+
+import '../node_modules/bootstrap-vue/dist/bootstrap-vue.css'
+
 import '../node_modules/vuetify/dist/vuetify.css'
 
 import _6f6c098b from '../layouts/default.vue'
-import _5ad3bdfb from '../layouts/idlayout.vue'
 
-const layouts = { "_default": _6f6c098b,"_idlayout": _5ad3bdfb }
+const layouts = { "_default": sanitizeComponent(_6f6c098b) }
 
 export default {
-  head: {"titleTemplate":"%s - img","title":"img","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"lets try the simple parent child relationship as of nuxt standard example (events\u002F_id.vue)"},{"hid":"mobile-web-app-capable","name":"mobile-web-app-capable","content":"yes"},{"hid":"apple-mobile-web-app-title","name":"apple-mobile-web-app-title","content":"img"},{"hid":"author","name":"author","content":"River-r"},{"hid":"theme-color","name":"theme-color","content":"#fff"},{"hid":"og:type","name":"og:type","property":"og:type","content":"website"},{"hid":"og:title","name":"og:title","property":"og:title","content":"img"},{"hid":"og:site_name","name":"og:site_name","property":"og:site_name","content":"img"},{"hid":"og:description","name":"og:description","property":"og:description","content":"lets try the simple parent child relationship as of nuxt standard example (events\u002F_id.vue)"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Roboto:100,300,400,500,700,900&display=swap"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Fcdn.jsdelivr.net\u002Fnpm\u002F@mdi\u002Ffont@latest\u002Fcss\u002Fmaterialdesignicons.min.css"},{"rel":"manifest","href":"\u002F_nuxt\u002Fmanifest.91f1789e.json"},{"rel":"shortcut icon","href":"\u002F_nuxt\u002Ficons\u002Ficon_64.5f6a36.png"},{"rel":"apple-touch-icon","href":"\u002F_nuxt\u002Ficons\u002Ficon_512.5f6a36.png","sizes":"512x512"}],"style":[],"script":[],"htmlAttrs":{"lang":"en"}},
-
   render (h, props) {
     const loadingEl = h('NuxtLoading', { ref: 'loading' })
-
-    if (this.nuxt.err && NuxtError) {
-      const errorLayout = (NuxtError.options || NuxtError).layout
-      if (errorLayout) {
-        this.setLayout(
-          typeof errorLayout === 'function'
-            ? errorLayout.call(NuxtError, this.context)
-            : errorLayout
-        )
-      }
-    }
 
     const layoutEl = h(this.layout || 'nuxt')
     const templateEl = h('div', {
@@ -72,8 +57,10 @@ export default {
     isOnline: true,
 
     layout: null,
-    layoutName: ''
-  }),
+    layoutName: '',
+
+    nbFetching: 0
+    }),
 
   beforeCreate () {
     Vue.util.defineReactive(this, 'nuxt', this.$options.nuxt)
@@ -81,8 +68,8 @@ export default {
   created () {
     // Add this.$nuxt in child instances
     Vue.prototype.$nuxt = this
-    // add to window so we can listen when ready
     if (process.client) {
+      // add to window so we can listen when ready
       window.$nuxt = this
 
       this.refreshOnlineStatus()
@@ -96,9 +83,10 @@ export default {
     this.context = this.$options.context
   },
 
-  mounted () {
+  async mounted () {
     this.$loading = this.$refs.loading
   },
+
   watch: {
     'nuxt.err': 'errorChanged'
   },
@@ -106,7 +94,11 @@ export default {
   computed: {
     isOffline () {
       return !this.isOnline
-    }
+    },
+
+    isFetching () {
+      return this.nbFetching > 0
+    },
   },
 
   methods: {
@@ -134,8 +126,17 @@ export default {
       const promises = pages.map((page) => {
         const p = []
 
-        if (page.$options.fetch) {
+        // Old fetch
+        if (page.$options.fetch && page.$options.fetch.length) {
           p.push(promisify(page.$options.fetch, this.context))
+        }
+        if (page.$fetch) {
+          p.push(page.$fetch())
+        } else {
+          // Get all component instance to call $fetch
+          for (const component of getChildrenComponentInstancesUsingFetch(page.$vnode.componentInstance)) {
+            p.push(component.$fetch())
+          }
         }
 
         if (page.$options.asyncData) {
@@ -154,7 +155,7 @@ export default {
       try {
         await Promise.all(promises)
       } catch (error) {
-        this.$loading.fail()
+        this.$loading.fail(error)
         globalHandleError(error)
         this.error(error)
       }
@@ -164,7 +165,7 @@ export default {
     errorChanged () {
       if (this.nuxt.err && this.$loading) {
         if (this.$loading.fail) {
-          this.$loading.fail()
+          this.$loading.fail(this.nuxt.err)
         }
         if (this.$loading.finish) {
           this.$loading.finish()
@@ -189,7 +190,7 @@ export default {
         layout = 'default'
       }
       return Promise.resolve(layouts['_' + layout])
-    }
+    },
   },
 
   components: {

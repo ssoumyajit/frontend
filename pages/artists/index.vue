@@ -1,6 +1,10 @@
 <template>
+  <v-app>
     <div>
-        <h6 class = "display-1 ma-4 d-flex justify-center ">List of Artists</h6>
+        <h6 class = "display-1 ma-4 d-flex justify-center ">InmyGroove community</h6>
+        <div text align="center">
+          click & check their websites.
+        </div>
         
         <div class="d-flex flex-wrap">
           <div v-for="artist in artists" :key ="artist.index">
@@ -9,6 +13,7 @@
         </div>
         
     </div>
+  </v-app>
 </template>
 
 <script>

@@ -2,9 +2,9 @@
   <v-app>
     <div>
         <nuxt-child :artist="artist"/>
-        <h2 class="text-center">{{artist.artist_name}}</h2>
+        <h3 class="text-center">{{artist.artist_name}}</h3>
         
-        <v-content>
+        <v-main>
           <!--- pick-up screen height so we can center vertically -->
           <v-container fill-height>
               <!--- vertical and horizontal alignment -->
@@ -13,7 +13,10 @@
                   <!--- v-flex is centered now, but we need to center button inside v-flex -->
                       <div class="text-xs-center">
                           <v-btn outlined :to= "`/artists/${artist.id}/`">About</v-btn>
-                          <v-btn outlined :to= "`/artists/${artist.id}/sharing`">Sharing</v-btn>
+                          <v-btn outlined :to= "`/artists/${artist.id}/bio_n_work`">Biography</v-btn>
+                          <v-btn outlined :to= "`/artists/${artist.id}/work`"> Work </v-btn>
+                          <v-btn outlined :to= "`/artists/${artist.id}/each1teach1`">Each 1 Teach 1</v-btn>
+                          
                           <!--
                             <v-btn outlined :to= "`/artists/${artist.id}/activities`">Activities</v-btn>                        
                             <v-btn outlined :to= "`/artists/${artist.id}/mythoughts`">My Blogs</v-btn>
@@ -22,22 +25,60 @@
                   </v-flex>
               </v-layout>
           </v-container>
-        </v-content>
+        </v-main>
 
         <center>
-            <v-img :src = "artist.artist_image" width="50%" class="centerImage"/>
+            <v-img :src = "artist.artist_image" width="80%" class="centerImage">
+                <v-layout
+                  align-end
+                  fill-height
+                  pa-3
+                  white--text
+                >
+                  <div class="title font-weight-medium">{{ artist.artist_name }}</div>
+                </v-layout>
+            </v-img>
         </center>
 
-        <div>
-            <p class="text-center"> {{ artist.bio }}</p>
-            <p class="text-center">{{ artist.country }}</p>
-        </div>
         
-        <!--<div class="d-flex flex-wrap">-->
-        <div v-for = "gallery in artist.gallery" :key = "gallery.index">
-           <img :src="gallery.g_upload_photo" height = "20%" width="20%" class="centerImage">
-        </div>
-        <!--</div>-->
+        <br>
+        <v-row align="center"  no-gutters>
+            <v-col align="center" justify="center" >  
+                    <div class="text font-weight-thin"> Why Dance !</div>
+                    <h3  class="mb-5 font-weight-light font-italic">
+                        <br>
+                        {{ artist.bio }}
+                    </h3>              
+                    <div class="text font-weight-thin"> -{{artist.artist_name}},{{ artist.country }} </div>
+                    
+            </v-col>
+            <v-col >
+                <v-container  grid-list-md class="ma-1 pa-1">
+                    <!-- xs = 600px full screen (12) -->
+                    <!-- md = 600px or more. half of the screen (6) -->
+                    <v-layout class="d-flex flex-wrap">
+                        <v-flex xs12 md6 v-for="gallery in artist.gallery" :key = "gallery.index">
+                            <div v-if = gallery.g_upload_photo>
+                                <v-img :src="gallery.g_upload_photo" class="centerImage" width = "250px" height = "250px"/>
+                            </div>
+                            <!--<GalleryCard :gallery = "gallery"></GalleryCard>-->
+                        </v-flex>
+                    </v-layout>
+                </v-container>
+
+            </v-col>
+        </v-row>
+
+        <br>
+        <br>
+        <v-row no-gutters>            
+            <v-col md="6" offset-md="3">
+                <h4  class="mb-5 font-weight-light">{{ artist.biography }}</h4>
+            </v-col>            
+        </v-row>
+       
+        
+        
 
     </div>
   </v-app>
@@ -45,10 +86,12 @@
 
 <script>
 import EventService from '@/services/EventService.js'
+import GalleryCard from '@/components/GalleryCard.vue'
 
 export default {
     //layout: 'idlayout',
     components:{
+        GalleryCard,
     },
     head() {
         return {
@@ -68,15 +111,18 @@ export default {
         return {
             artist: artist_response.data,  //event ...... NOT events here , dont miss this one..
         }
-      } catch (e) {
+      } catch (err) {
         error({statusCode:503,  message: err.message})
         }
     },
     
-    components: {
-       
-    }
 }
+/* <div class="d-flex flex-wrap">
+            <div v-for = "gallery in artist.gallery" :key = "gallery.index">
+               <GalleryCard :gallery = "gallery"></GalleryCard>
+                <!--<img :src="gallery.g_upload_photo"  class="centerImage">-->
+            </div>
+        </div>*/ 
 </script>
 
 <style scoped>

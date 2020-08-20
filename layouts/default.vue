@@ -1,14 +1,18 @@
 <template>
   <v-app>
-    <v-app-bar color="deep-purple accent-3" app>     
-      <v-btn to = '/' text>InmyGroove</v-btn>  <!-- nuxt-link instead of router-link-->
-      <v-btn text to = '/artists'>Artists</v-btn>
-      <v-spacer/>
-    </v-app-bar>
-
-    <v-content>
+    <!--<v-app-bar color="white" height="50px" app>-->  
+      <!--<v-row align="left">-->
+      <v-row >
+        <v-col class="text-center" cols="12" sm="2">
+          <div>
+            <v-btn text class="ma-1" color="black" small to='/'>InmyGroove</v-btn>
+          </div>
+        </v-col>
+      </v-row>
+    <br>
+    <v-main>
       <nuxt/>
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 

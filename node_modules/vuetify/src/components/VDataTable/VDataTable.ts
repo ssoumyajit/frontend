@@ -1,7 +1,8 @@
 import './VDataTable.sass'
 
 // Types
-import { VNode, VNodeChildrenArrayContents, VNodeChildren, PropType } from 'vue'
+import { VNode, VNodeChildrenArrayContents, VNodeChildren } from 'vue'
+import { PropValidator } from 'vue/types/options'
 import {
   DataTableHeader,
   DataTableFilterFunction,
@@ -10,8 +11,10 @@ import {
   DataPagination,
   DataTableCompareFunction,
   DataItemsPerPageOption,
-} from 'types'
-import { PropValidator } from 'vue/types/options'
+  ItemGroup,
+  RowClassFunction,
+  DataTableItemProps,
+} from 'vuetify/types'
 
 // Components
 import { VData } from '../VData'
@@ -20,19 +23,23 @@ import VBtn from '../VBtn'
 import VDataTableHeader from './VDataTableHeader'
 // import VVirtualTable from './VVirtualTable'
 import VIcon from '../VIcon'
-import VProgressLinear from '../VProgressLinear'
 import Row from './Row'
 import RowGroup from './RowGroup'
 import VSimpleCheckbox from '../VCheckbox/VSimpleCheckbox'
 import VSimpleTable from './VSimpleTable'
 import MobileRow from './MobileRow'
 
+// Mixins
+import Loadable from '../../mixins/loadable'
+
 // Directives
 import ripple from '../../directives/ripple'
 
 // Helpers
-import { deepEqual, getObjectValueByPath, getPrefixedScopedSlots, getSlot, defaultFilter, camelizeObjectKeys } from '../../util/helpers'
+import mixins from '../../util/mixins'
+import { deepEqual, getObjectValueByPath, getPrefixedScopedSlots, getSlot, defaultFilter, camelizeObjectKeys, getPropertyFromItem } from '../../util/helpers'
 import { breaking } from '../../util/console'
+import { mergeClasses } from '../../util/mergeData'
 
 function filterFn (item: any, search: string | null, filter: DataTableFilterFunction) {
   return (header: DataTableHeader) => {
@@ -48,21 +55,26 @@ function searchTableItems (
   headersWithoutCustomFilters: DataTableHeader[],
   customFilter: DataTableFilterFunction
 ) {
-  let filtered = items
   search = typeof search === 'string' ? search.trim() : null
-  if (search && headersWithoutCustomFilters.length) {
-    filtered = items.filter(item => headersWithoutCustomFilters.some(filterFn(item, search, customFilter)))
-  }
 
-  if (headersWithCustomFilters.length) {
-    filtered = filtered.filter(item => headersWithCustomFilters.every(filterFn(item, search, defaultFilter)))
-  }
+  return items.filter(item => {
+    // Headers with custom filters are evaluated whether or not a search term has been provided.
+    // We need to match every filter to be included in the results.
+    const matchesColumnFilters = headersWithCustomFilters.every(filterFn(item, search, defaultFilter))
 
-  return filtered
+    // Headers without custom filters are only filtered by the `search` property if it is defined.
+    // We only need a single column to match the search term to be included in the results.
+    const matchesSearchTerm = !search || headersWithoutCustomFilters.some(filterFn(item, search, customFilter))
+
+    return matchesColumnFilters && matchesSearchTerm
+  })
 }
 
 /* @vue/component */
-export default VDataIterator.extend({
+export default mixins(
+  VDataIterator,
+  Loadable,
+).extend({
   name: 'v-data-table',
 
   // https://github.com/vuejs/vue/issues/6872
@@ -93,8 +105,16 @@ export default VDataIterator.extend({
       default: '$expand',
     },
     customFilter: {
-      type: Function as PropType<typeof defaultFilter>,
+      type: Function,
       default: defaultFilter,
+    } as PropValidator<typeof defaultFilter>,
+    itemClass: {
+      type: [String, Function],
+      default: () => '',
+    } as PropValidator<RowClassFunction | string>,
+    loaderHeight: {
+      type: [Number, String],
+      default: 4,
     },
   },
 
@@ -203,7 +223,7 @@ export default VDataIterator.extend({
     customSortWithHeaders (items: any[], sortBy: string[], sortDesc: boolean[], locale: string) {
       return this.customSort(items, sortBy, sortDesc, locale, this.columnSorters)
     },
-    createItemProps (item: any) {
+    createItemProps (item: any): DataTableItemProps {
       const props = VDataIterator.options.methods.createItemProps.call(this, item)
 
       return Object.assign(props, { headers: this.computedHeaders })
@@ -223,18 +243,10 @@ export default VDataIterator.extend({
       }))
     },
     genLoading () {
-      const progress = this.$slots['progress'] ? this.$slots.progress : this.$createElement(VProgressLinear, {
-        props: {
-          color: this.loading === true ? 'primary' : this.loading,
-          height: 2,
-          indeterminate: true,
-        },
-      })
-
       const th = this.$createElement('th', {
         staticClass: 'column',
         attrs: this.colspanAttrs,
-      }, [progress])
+      }, [this.genProgress()])
 
       const tr = this.$createElement('tr', {
         staticClass: 'v-data-table__progress',
@@ -293,21 +305,19 @@ export default VDataIterator.extend({
         ? this.genGroupedRows(props.groupedItems, props)
         : this.genRows(items, props)
     },
-    genGroupedRows (groupedItems: Record<string, any[]>, props: DataScopeProps) {
-      const groups = Object.keys(groupedItems || {})
-
-      return groups.map(group => {
-        if (!this.openCache.hasOwnProperty(group)) this.$set(this.openCache, group, true)
+    genGroupedRows (groupedItems: ItemGroup<any>[], props: DataScopeProps) {
+      return groupedItems.map(group => {
+        if (!this.openCache.hasOwnProperty(group.name)) this.$set(this.openCache, group.name, true)
 
         if (this.$scopedSlots.group) {
           return this.$scopedSlots.group({
-            group,
+            group: group.name,
             options: props.options,
-            items: groupedItems![group],
+            items: group.items,
             headers: this.computedHeaders,
           })
         } else {
-          return this.genDefaultGroupedRow(group, groupedItems[group], props)
+          return this.genDefaultGroupedRow(group.name, group.items, props)
         }
       })
     },
@@ -356,7 +366,7 @@ export default VDataIterator.extend({
 
       if (this.$scopedSlots['group.summary']) {
         children.push(this.$createElement('template', { slot: 'column.summary' }, [
-          this.$scopedSlots['group.summary']!({ group, groupBy: props.options.groupBy, items, headers: this.computedHeaders }),
+          this.$scopedSlots['group.summary']!({ group, groupBy: props.options.groupBy, items, headers: this.computedHeaders, isOpen, toggle: toggleFn }),
         ]))
       }
 
@@ -448,20 +458,23 @@ export default VDataIterator.extend({
 
       return this.$createElement(this.isMobile ? MobileRow : Row, {
         key: getObjectValueByPath(item, this.itemKey),
-        class: {
-          ...classes,
-          'v-data-table__selected': data.isSelected,
-        },
+        class: mergeClasses(
+          { ...classes, 'v-data-table__selected': data.isSelected },
+          getPropertyFromItem(item, this.itemClass)
+        ),
         props: {
           headers: this.computedHeaders,
+          hideDefaultHeader: this.hideDefaultHeader,
           item,
           rtl: this.$vuetify.rtl,
         },
         scopedSlots,
         on: {
-          // TODO: first argument should be the data object
+          // TODO: for click, the first argument should be the event, and the second argument should be data,
           // but this is a breaking change so it's for v3
           click: () => this.$emit('click:row', item, data),
+          contextmenu: (event: MouseEvent) => this.$emit('contextmenu:row', event, data),
+          dblclick: (event: MouseEvent) => this.$emit('dblclick:row', event, data),
         },
       })
     },

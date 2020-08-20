@@ -1,9 +1,26 @@
 <template>
   <v-app>
-
-    <v-container justify-center>
-      <img src = "~/assets/inmygroove.png"  width="50%" alt="In My Groove logo" class="center"></img>
-    </v-container>
+      
+      <div align="center">  
+        <img src = "~/assets/pencil_art2.png"  width="40%" alt="In My Groove logo"></img>
+        <br><br>
+        <div class="mb-5 font-weight-light"> "In My Groove" is a community platform to celebrate the "each 1 teach 1" legacy of the HipHop culture.
+          <br>
+            Every student can appreciate her/his teachers who shared their knowledge & Every teacher can find all of their students at one place.
+          <br>
+            Let's connect HipHop a little more, share it a little more...Together.
+        </div>
+        <div>
+            <v-btn rounded class="ma-4" outlined color="black" large to = '/artists/create'>create your own website</v-btn>
+            <v-btn rounded class="ma-4" outlined color="black" large to = '/artists'>find artists</v-btn>
+            <v-btn rounded class="ma-4" outlined color="black" large to = '/blogs'>write a blog for the community</v-btn>
+        </div>
+        <br>
+        <hr>
+        <div class="font-weight-thin">developed by the dancers, for the dancers with music & lots of love.</div>
+        
+        
+      </div>
   </v-app>     
 </template>
 
@@ -27,4 +44,20 @@ export default {
           //yet connected.This is how Hip Hop connects, through sharing. Each One Teach One. "In My Groove" is an effort to connect us 
           //a little more, connect Hip Hop a little more, connect the students with their 
           //teachers and the teachers with their students a little more so that the legacy stays forever.
+
+/*
+<v-avatar width="60px" height="60px">
+          <img
+            src="~/assets/yiyasha.jpeg"
+            alt="yiyasha"
+          >
+        </v-avatar>
+        <v-avatar width="60px" height="60px">
+          <img
+            src="~/assets/river.jpeg"
+            alt="yiyasha"
+          >
+  </v-avatar>
+
+*/
 </script>
