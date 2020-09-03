@@ -3,7 +3,7 @@
     <v-container>
       
         <div>
-          <img :src="myteacher.s_photo" class="centerImage">
+          <v-img :src="myteacher.s_photo" class="centerImage" width = "100px" height = "150px"/>
           <br>
           <v-btn color="orange" x-small>
             {{ myteacher.s_student }}

@@ -4,11 +4,15 @@ import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
 const _1ca40e78 = () => interopDefault(import('../pages/artists/index.vue' /* webpackChunkName: "pages/artists/index" */))
+const _2fbe7e28 = () => interopDefault(import('../pages/biography.vue' /* webpackChunkName: "pages/biography" */))
 const _9cd2ca74 = () => interopDefault(import('../pages/blogs.vue' /* webpackChunkName: "pages/blogs" */))
-const _b0ea54d2 = () => interopDefault(import('../pages/create.vue' /* webpackChunkName: "pages/create" */))
+const _2ef08eda = () => interopDefault(import('../pages/create/index.vue' /* webpackChunkName: "pages/create/index" */))
 const _6bc56a7a = () => interopDefault(import('../pages/artists/create.vue' /* webpackChunkName: "pages/artists/create" */))
 const _21326d76 = () => interopDefault(import('../pages/artists/GalleryUpload.vue' /* webpackChunkName: "pages/artists/GalleryUpload" */))
 const _7a0f2dbc = () => interopDefault(import('../pages/artists/uploadReference.vue' /* webpackChunkName: "pages/artists/uploadReference" */))
+const _0f38b415 = () => interopDefault(import('../pages/create/about.vue' /* webpackChunkName: "pages/create/about" */))
+const _19b6bdb4 = () => interopDefault(import('../pages/create/each1teach1.vue' /* webpackChunkName: "pages/create/each1teach1" */))
+const _58f0628e = () => interopDefault(import('../pages/create/work.vue' /* webpackChunkName: "pages/create/work" */))
 const _41a947a8 = () => interopDefault(import('../pages/artists/_id.vue' /* webpackChunkName: "pages/artists/_id" */))
 const _75d7e568 = () => interopDefault(import('../pages/artists/_id/bio_n_work.vue' /* webpackChunkName: "pages/artists/_id/bio_n_work" */))
 const _49010cc9 = () => interopDefault(import('../pages/artists/_id/each1teach1.vue' /* webpackChunkName: "pages/artists/_id/each1teach1" */))
@@ -37,12 +41,16 @@ export const routerOptions = {
     component: _1ca40e78,
     name: "artists"
   }, {
+    path: "/biography",
+    component: _2fbe7e28,
+    name: "biography"
+  }, {
     path: "/blogs",
     component: _9cd2ca74,
     name: "blogs"
   }, {
     path: "/create",
-    component: _b0ea54d2,
+    component: _2ef08eda,
     name: "create"
   }, {
     path: "/artists/create",
@@ -56,6 +64,18 @@ export const routerOptions = {
     path: "/artists/uploadReference",
     component: _7a0f2dbc,
     name: "artists-uploadReference"
+  }, {
+    path: "/create/about",
+    component: _0f38b415,
+    name: "create-about"
+  }, {
+    path: "/create/each1teach1",
+    component: _19b6bdb4,
+    name: "create-each1teach1"
+  }, {
+    path: "/create/work",
+    component: _58f0628e,
+    name: "create-work"
   }, {
     path: "/artists/:id",
     component: _41a947a8,

@@ -7,6 +7,13 @@
     "_name": "_1ca40e78"
   },
   {
+    "name": "biography",
+    "path": "/biography",
+    "component": "/Users/river/Downloads/inmygroove_tech/img/pages/biography.vue",
+    "chunkName": "pages/biography",
+    "_name": "_2fbe7e28"
+  },
+  {
     "name": "blogs",
     "path": "/blogs",
     "component": "/Users/river/Downloads/inmygroove_tech/img/pages/blogs.vue",
@@ -16,9 +23,9 @@
   {
     "name": "create",
     "path": "/create",
-    "component": "/Users/river/Downloads/inmygroove_tech/img/pages/create.vue",
-    "chunkName": "pages/create",
-    "_name": "_b0ea54d2"
+    "component": "/Users/river/Downloads/inmygroove_tech/img/pages/create/index.vue",
+    "chunkName": "pages/create/index",
+    "_name": "_2ef08eda"
   },
   {
     "name": "artists-create",
@@ -40,6 +47,27 @@
     "component": "/Users/river/Downloads/inmygroove_tech/img/pages/artists/uploadReference.vue",
     "chunkName": "pages/artists/uploadReference",
     "_name": "_7a0f2dbc"
+  },
+  {
+    "name": "create-about",
+    "path": "/create/about",
+    "component": "/Users/river/Downloads/inmygroove_tech/img/pages/create/about.vue",
+    "chunkName": "pages/create/about",
+    "_name": "_0f38b415"
+  },
+  {
+    "name": "create-each1teach1",
+    "path": "/create/each1teach1",
+    "component": "/Users/river/Downloads/inmygroove_tech/img/pages/create/each1teach1.vue",
+    "chunkName": "pages/create/each1teach1",
+    "_name": "_19b6bdb4"
+  },
+  {
+    "name": "create-work",
+    "path": "/create/work",
+    "component": "/Users/river/Downloads/inmygroove_tech/img/pages/create/work.vue",
+    "chunkName": "pages/create/work",
+    "_name": "_58f0628e"
   },
   {
     "name": "artists-id",

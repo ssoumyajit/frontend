@@ -3,7 +3,7 @@
     <!--<v-app-bar color="white" height="50px" app>-->  
       <!--<v-row align="left">-->
       <v-row >
-        <v-col class="text-center" cols="12" sm="2">
+        <v-col class="text-center" cols="12" sm="2" >
           <div>
             <v-btn text class="ma-1" color="black" small to='/'>InmyGroove</v-btn>
           </div>

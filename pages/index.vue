@@ -11,13 +11,14 @@
             Let's connect HipHop a little more, share it a little more...Together.
         </div>
         <div>
-            <v-btn rounded class="ma-4" outlined color="black" large to = '/artists/create'>create your own website</v-btn>
+            
             <v-btn rounded class="ma-4" outlined color="black" large to = '/artists'>find artists</v-btn>
-            <v-btn rounded class="ma-4" outlined color="black" large to = '/blogs'>write a blog for the community</v-btn>
+            <v-btn rounded class="ma-4" outlined color="black" large to = '/create'>create your own website</v-btn>
+            <v-btn rounded class="ma-4" outlined color="black" large to = '/blogs'>share your thoughts</v-btn>
         </div>
         <br>
         <hr>
-        <div class="font-weight-thin">developed by the dancers, for the dancers with music & lots of love.</div>
+        <div class="font-weight-thin">developed for the dancers, by the dancers with lots of love.</div>
         
         
       </div>

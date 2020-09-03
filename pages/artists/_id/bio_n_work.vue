@@ -4,16 +4,16 @@
             <nuxt-child :artist="artist"/>
             <h3 class="text-center">{{artist.artist_name}}</h3>
 
-            <v-content>
+            <v-main>
               <v-container fill-height>
                 <v-layout align-center justify-center>
                     <v-flex xs6>
 
-                        <div class="text-xs-center">
-                          <v-btn outlined :to= "`/artists/${artist.id}/`">About</v-btn>
-                          <v-btn outlined :to= "`/artists/${artist.id}/bio_n_work`">Biography</v-btn>
-                          <v-btn outlined :to= "`/artists/${artist.id}/work`"> Work </v-btn>
-                          <v-btn outlined :to= "`/artists/${artist.id}/each1teach1`">Each 1 Teach 1 </v-btn>
+                        <div class="text-xs-center" align = "center">
+                          <v-btn rounded outlined class="text-capitalize" :to= "`/artists/${artist.id}/`">About</v-btn>
+                          <v-btn rounded outlined class="text-capitalize" :to= "`/artists/${artist.id}/bio_n_work`">Biography</v-btn>
+                          <v-btn rounded outlined class="text-capitalize" :to= "`/artists/${artist.id}/work`"> Work </v-btn>
+                          <v-btn rounded outlined class="text-capitalize" :to= "`/artists/${artist.id}/each1teach1`">Each 1 Teach 1 </v-btn>
                         </div>
                         <br>
                         
@@ -24,16 +24,19 @@
                 </v-layout>
                 
               </v-container>
-            </v-content>
+            </v-main>
         </div>
 
         <!--<v-container class="grey lighten-5">--> <!--gives that shady rectangular boundary around the component-->
-            <div>
+            <div >
                 <v-row >            
                     <v-col md="6" offset-md="3">
                         <br>
                         <h5>Biography</h5>
-                        <h4  class="mb-5 font-weight-light">{{ artist.biography }}</h4>
+                        <div v-if="artist.biography != NULL" >
+                            <h4 class="mb-5 font-weight-light">{{ artist.biography.bi_content}}</h4>
+                        </div>
+                        
                     </v-col>            
                 </v-row>
             </div>            
