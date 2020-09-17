@@ -7,20 +7,6 @@
     "_name": "_1ca40e78"
   },
   {
-    "name": "biography",
-    "path": "/biography",
-    "component": "/Users/river/Downloads/inmygroove_tech/img/pages/biography.vue",
-    "chunkName": "pages/biography",
-    "_name": "_2fbe7e28"
-  },
-  {
-    "name": "blogs",
-    "path": "/blogs",
-    "component": "/Users/river/Downloads/inmygroove_tech/img/pages/blogs.vue",
-    "chunkName": "pages/blogs",
-    "_name": "_9cd2ca74"
-  },
-  {
     "name": "create",
     "path": "/create",
     "component": "/Users/river/Downloads/inmygroove_tech/img/pages/create/index.vue",
@@ -70,54 +56,54 @@
     "_name": "_58f0628e"
   },
   {
-    "name": "artists-id",
-    "path": "/artists/:id",
-    "component": "/Users/river/Downloads/inmygroove_tech/img/pages/artists/_id.vue",
-    "chunkName": "pages/artists/_id",
-    "children": [
-      {
-        "name": "artists-id-bio_n_work",
-        "path": "bio_n_work",
-        "component": "/Users/river/Downloads/inmygroove_tech/img/pages/artists/_id/bio_n_work.vue",
-        "chunkName": "pages/artists/_id/bio_n_work",
-        "_name": "_75d7e568"
-      },
-      {
-        "name": "artists-id-each1teach1",
-        "path": "each1teach1",
-        "component": "/Users/river/Downloads/inmygroove_tech/img/pages/artists/_id/each1teach1/index.vue",
-        "chunkName": "pages/artists/_id/each1teach1/index",
-        "_name": "_2b99188c"
-      },
-      {
-        "name": "artists-id-PortfolioEdit",
-        "path": "PortfolioEdit",
-        "component": "/Users/river/Downloads/inmygroove_tech/img/pages/artists/_id/PortfolioEdit.vue",
-        "chunkName": "pages/artists/_id/PortfolioEdit",
-        "_name": "_3c2cc72f"
-      },
-      {
-        "name": "artists-id-work",
-        "path": "work",
-        "component": "/Users/river/Downloads/inmygroove_tech/img/pages/artists/_id/work.vue",
-        "chunkName": "pages/artists/_id/work",
-        "_name": "_078d1d44"
-      },
-      {
-        "name": "artists-id-each1teach1-token",
-        "path": "each1teach1/:token",
-        "component": "/Users/river/Downloads/inmygroove_tech/img/pages/artists/_id/each1teach1/_token.vue",
-        "chunkName": "pages/artists/_id/each1teach1/_token",
-        "_name": "_655cdea0"
-      }
-    ],
-    "_name": "_41a947a8"
-  },
-  {
     "name": "index",
     "path": "/",
     "component": "/Users/river/Downloads/inmygroove_tech/img/pages/index.vue",
     "chunkName": "pages/index",
     "_name": "_46303607"
+  },
+  {
+    "name": "id",
+    "path": "/:id",
+    "component": "/Users/river/Downloads/inmygroove_tech/img/pages/_id.vue",
+    "chunkName": "pages/_id",
+    "children": [
+      {
+        "name": "id-bio_n_work",
+        "path": "bio_n_work",
+        "component": "/Users/river/Downloads/inmygroove_tech/img/pages/_id/bio_n_work.vue",
+        "chunkName": "pages/_id/bio_n_work",
+        "_name": "_5c01e92e"
+      },
+      {
+        "name": "id-each1teach1",
+        "path": "each1teach1",
+        "component": "/Users/river/Downloads/inmygroove_tech/img/pages/_id/each1teach1.vue",
+        "chunkName": "pages/_id/each1teach1",
+        "_name": "_4d145b68"
+      },
+      {
+        "name": "id-PortfolioEdit",
+        "path": "PortfolioEdit",
+        "component": "/Users/river/Downloads/inmygroove_tech/img/pages/_id/PortfolioEdit.vue",
+        "chunkName": "pages/_id/PortfolioEdit",
+        "_name": "_faf3901c"
+      },
+      {
+        "name": "id-work",
+        "path": "work",
+        "component": "/Users/river/Downloads/inmygroove_tech/img/pages/_id/work.vue",
+        "chunkName": "pages/_id/work",
+        "_name": "_67a43521"
+      },
+      {
+        "name": "id-sharing-token",
+        "path": "sharing/:token?",
+        "component": "/Users/river/Downloads/inmygroove_tech/img/pages/_id/sharing/_token.vue",
+        "chunkName": "pages/_id/sharing/_token",
+        "_name": "_5e33d79d"
+      }
+    ],
+    "_name": "_72920e2f"
   }
 ]

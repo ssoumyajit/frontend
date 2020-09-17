@@ -9,9 +9,9 @@
                     <v-flex xs6>
 
                         <div class="text-xs-center" align="center">
-                          <v-btn rounded outlined class="text-capitalize" :to= "`/artists/${artist.id}/`">About</v-btn>
-                          <v-btn rounded outlined class="text-capitalize" :to= "`/artists/${artist.id}/work`"> Work </v-btn>
-                          <v-btn rounded outlined class="text-capitalize" :to= "`/artists/${artist.id}/each1teach1`">Each 1 Teach 1 </v-btn>
+                          <v-btn rounded outlined class="text-capitalize" :to= "`/${artist.id}/`">About</v-btn>
+                          <v-btn rounded outlined class="text-capitalize" :to= "`/${artist.id}/work`"> Work </v-btn>
+                          <v-btn rounded outlined class="text-capitalize" :to= "`/${artist.id}/each1teach1`">Each 1 Teach 1 </v-btn>
                         </div>                            
                         <!--<v-btn text :to= "`/artists/${artist.id}`"> back </v-btn>-->
 
