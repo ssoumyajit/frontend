@@ -1,7 +1,7 @@
 <template>
     <v-app>
         <div>
-            <nuxt-child :artist="artist"/>
+            <nuxt-child/>
 
             <v-main>
               <v-container fill-height>
@@ -66,7 +66,7 @@ import TeachersCard from '@/components/TeachersCard.vue'
 
 export default {
     //props: ['artist']
-    props: ['artist'],
+    props: ['artist', 'myteacher'],
     components: {
         StudentsCard,
         TeachersCard

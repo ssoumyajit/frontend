@@ -85,9 +85,9 @@
       {
         "name": "artists-id-each1teach1",
         "path": "each1teach1",
-        "component": "/Users/river/Downloads/inmygroove_tech/img/pages/artists/_id/each1teach1.vue",
-        "chunkName": "pages/artists/_id/each1teach1",
-        "_name": "_49010cc9"
+        "component": "/Users/river/Downloads/inmygroove_tech/img/pages/artists/_id/each1teach1/index.vue",
+        "chunkName": "pages/artists/_id/each1teach1/index",
+        "_name": "_2b99188c"
       },
       {
         "name": "artists-id-PortfolioEdit",
@@ -102,6 +102,13 @@
         "component": "/Users/river/Downloads/inmygroove_tech/img/pages/artists/_id/work.vue",
         "chunkName": "pages/artists/_id/work",
         "_name": "_078d1d44"
+      },
+      {
+        "name": "artists-id-each1teach1-token",
+        "path": "each1teach1/:token",
+        "component": "/Users/river/Downloads/inmygroove_tech/img/pages/artists/_id/each1teach1/_token.vue",
+        "chunkName": "pages/artists/_id/each1teach1/_token",
+        "_name": "_655cdea0"
       }
     ],
     "_name": "_41a947a8"

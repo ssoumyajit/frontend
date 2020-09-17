@@ -1,5 +1,5 @@
 <template>
-  <v-card class = "ma-1 pa-1" ><!--hover @mousedown.stop :elevation="5" :to="'/artists/' + artist.id" >--><!-- dark -->
+  <v-card class = "ma-1 pa-1" hover @mousedown.stop :elevation="5" :to="'/each1teach1/'+ mystudent.token" ><!-- dark -->
     <v-container>
       
         <div>

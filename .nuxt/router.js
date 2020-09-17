@@ -15,9 +15,10 @@ const _19b6bdb4 = () => interopDefault(import('../pages/create/each1teach1.vue' 
 const _58f0628e = () => interopDefault(import('../pages/create/work.vue' /* webpackChunkName: "pages/create/work" */))
 const _41a947a8 = () => interopDefault(import('../pages/artists/_id.vue' /* webpackChunkName: "pages/artists/_id" */))
 const _75d7e568 = () => interopDefault(import('../pages/artists/_id/bio_n_work.vue' /* webpackChunkName: "pages/artists/_id/bio_n_work" */))
-const _49010cc9 = () => interopDefault(import('../pages/artists/_id/each1teach1.vue' /* webpackChunkName: "pages/artists/_id/each1teach1" */))
+const _2b99188c = () => interopDefault(import('../pages/artists/_id/each1teach1/index.vue' /* webpackChunkName: "pages/artists/_id/each1teach1/index" */))
 const _3c2cc72f = () => interopDefault(import('../pages/artists/_id/PortfolioEdit.vue' /* webpackChunkName: "pages/artists/_id/PortfolioEdit" */))
 const _078d1d44 = () => interopDefault(import('../pages/artists/_id/work.vue' /* webpackChunkName: "pages/artists/_id/work" */))
+const _655cdea0 = () => interopDefault(import('../pages/artists/_id/each1teach1/_token.vue' /* webpackChunkName: "pages/artists/_id/each1teach1/_token" */))
 const _46303607 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 // TODO: remove in Nuxt 3
@@ -86,7 +87,7 @@ export const routerOptions = {
       name: "artists-id-bio_n_work"
     }, {
       path: "each1teach1",
-      component: _49010cc9,
+      component: _2b99188c,
       name: "artists-id-each1teach1"
     }, {
       path: "PortfolioEdit",
@@ -96,6 +97,10 @@ export const routerOptions = {
       path: "work",
       component: _078d1d44,
       name: "artists-id-work"
+    }, {
+      path: "each1teach1/:token",
+      component: _655cdea0,
+      name: "artists-id-each1teach1-token"
     }]
   }, {
     path: "/",
