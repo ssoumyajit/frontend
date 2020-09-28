@@ -3,107 +3,38 @@
     "name": "artists",
     "path": "/artists",
     "component": "/Users/river/Downloads/inmygroove_tech/img/pages/artists/index.vue",
-    "chunkName": "pages/artists/index",
-    "_name": "_1ca40e78"
-  },
-  {
-    "name": "create",
-    "path": "/create",
-    "component": "/Users/river/Downloads/inmygroove_tech/img/pages/create/index.vue",
-    "chunkName": "pages/create/index",
-    "_name": "_2ef08eda"
-  },
-  {
-    "name": "artists-create",
-    "path": "/artists/create",
-    "component": "/Users/river/Downloads/inmygroove_tech/img/pages/artists/create.vue",
-    "chunkName": "pages/artists/create",
-    "_name": "_6bc56a7a"
-  },
-  {
-    "name": "artists-GalleryUpload",
-    "path": "/artists/GalleryUpload",
-    "component": "/Users/river/Downloads/inmygroove_tech/img/pages/artists/GalleryUpload.vue",
-    "chunkName": "pages/artists/GalleryUpload",
-    "_name": "_21326d76"
-  },
-  {
-    "name": "artists-uploadReference",
-    "path": "/artists/uploadReference",
-    "component": "/Users/river/Downloads/inmygroove_tech/img/pages/artists/uploadReference.vue",
-    "chunkName": "pages/artists/uploadReference",
-    "_name": "_7a0f2dbc"
-  },
-  {
-    "name": "create-about",
-    "path": "/create/about",
-    "component": "/Users/river/Downloads/inmygroove_tech/img/pages/create/about.vue",
-    "chunkName": "pages/create/about",
-    "_name": "_0f38b415"
-  },
-  {
-    "name": "create-each1teach1",
-    "path": "/create/each1teach1",
-    "component": "/Users/river/Downloads/inmygroove_tech/img/pages/create/each1teach1.vue",
-    "chunkName": "pages/create/each1teach1",
-    "_name": "_19b6bdb4"
-  },
-  {
-    "name": "create-work",
-    "path": "/create/work",
-    "component": "/Users/river/Downloads/inmygroove_tech/img/pages/create/work.vue",
-    "chunkName": "pages/create/work",
-    "_name": "_58f0628e"
+    "chunkName": "pages/artists/index"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/river/Downloads/inmygroove_tech/img/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_46303607"
+    "chunkName": "pages/index"
   },
   {
-    "name": "id",
-    "path": "/:id",
-    "component": "/Users/river/Downloads/inmygroove_tech/img/pages/_id.vue",
-    "chunkName": "pages/_id",
+    "name": "username",
+    "path": "/:username",
+    "component": "/Users/river/Downloads/inmygroove_tech/img/pages/_username.vue",
+    "chunkName": "pages/_username",
     "children": [
       {
-        "name": "id-bio_n_work",
-        "path": "bio_n_work",
-        "component": "/Users/river/Downloads/inmygroove_tech/img/pages/_id/bio_n_work.vue",
-        "chunkName": "pages/_id/bio_n_work",
-        "_name": "_5c01e92e"
-      },
-      {
-        "name": "id-each1teach1",
-        "path": "each1teach1",
-        "component": "/Users/river/Downloads/inmygroove_tech/img/pages/_id/each1teach1.vue",
-        "chunkName": "pages/_id/each1teach1",
-        "_name": "_4d145b68"
-      },
-      {
-        "name": "id-PortfolioEdit",
-        "path": "PortfolioEdit",
-        "component": "/Users/river/Downloads/inmygroove_tech/img/pages/_id/PortfolioEdit.vue",
-        "chunkName": "pages/_id/PortfolioEdit",
-        "_name": "_faf3901c"
-      },
-      {
-        "name": "id-work",
+        "name": "username-work",
         "path": "work",
-        "component": "/Users/river/Downloads/inmygroove_tech/img/pages/_id/work.vue",
-        "chunkName": "pages/_id/work",
-        "_name": "_67a43521"
+        "component": "/Users/river/Downloads/inmygroove_tech/img/pages/_username/work.vue",
+        "chunkName": "pages/_username/work"
       },
       {
-        "name": "id-sharing-token",
-        "path": "sharing/:token?",
-        "component": "/Users/river/Downloads/inmygroove_tech/img/pages/_id/sharing/_token.vue",
-        "chunkName": "pages/_id/sharing/_token",
-        "_name": "_5e33d79d"
+        "name": "username-each1teach1",
+        "path": ":each1teach1",
+        "component": "/Users/river/Downloads/inmygroove_tech/img/pages/_username/_each1teach1/index.vue",
+        "chunkName": "pages/_username/_each1teach1/index"
+      },
+      {
+        "name": "username-each1teach1-id",
+        "path": ":each1teach1?/:id",
+        "component": "/Users/river/Downloads/inmygroove_tech/img/pages/_username/_each1teach1/_id.vue",
+        "chunkName": "pages/_username/_each1teach1/_id"
       }
-    ],
-    "_name": "_72920e2f"
+    ]
   }
 ]

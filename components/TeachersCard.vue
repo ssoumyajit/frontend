@@ -1,13 +1,14 @@
 <template>
-  <v-card class = "ma-1 pa-1" hover @mousedown.stop :elevation="5" :to="'/each1teach1/'+ mystudent.token" ><!-- dark -->
+  <v-card class = "ma-1 pa-1" hover @mousedown.stop :elevation="5" :to="'/' + artist.username + '/each1teach1/' + share.id">
+  
     <v-container>
-      
+
         <div>
-          <v-img :src="mystudent.s_photo" class="centerImage" width = "200px" height = "300px"/>
-          <br>
-          <v-btn color="orange" x-small>
-            {{ mystudent.s_teacher }}
-          </v-btn>
+          <p>{{artist.username}}</p>
+          <v-img :src="share.s_photo" class="centerImage" height="100px" width="100px"/>
+          <div class="text font-weight-light" v-for = "s_teacher in share.s_teacher" :key = "s_teacher.index">
+              {{s_teacher.username}},{{s_teacher.country}}              
+          </div>
         </div>
 
     </v-container>
@@ -18,7 +19,8 @@
     export default {
       name: 'TeachersCard',
       props: {
-        mystudent: Object,
+        artist: Object,
+        share: Object
       },
       
     }

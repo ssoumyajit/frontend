@@ -21,13 +21,13 @@
             <v-col></v-col>
           </v-row>
         </v-container>
+        
+    </div>
 
-        <div class="d-flex flex-wrap">
+    <div class="d-flex flex-wrap">
           <div v-for="artist in filteredArtists" :key ="artist.index">
             <ArtistCard :artist="artist" ></ArtistCard>  <!-- can add class = "ma-1 pa-1" -->
           </div>
-        </div>
-        
     </div>
   </v-app>
 </template>

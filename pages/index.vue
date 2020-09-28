@@ -10,53 +10,19 @@
           <br>
             Let's connect HipHop a little more, share it a little more...Together.
         </div>
-        <div>
-            
+        <div>            
             <v-btn rounded class="ma-4" outlined color="black" large to = '/artists'>find artists</v-btn>
-            <v-btn rounded class="ma-4" outlined color="black" large to = '/create'>create your own website</v-btn>
         </div>
         <br>
         <hr>
         <!--<div class="font-weight-thin">developed for the dancers, by the dancers with lots of love.</div>-->      
       </div>
 
-      <div>
-        <h6 class = "display-1 ma-4 d-flex justify-center ">InmyGroove community</h6>
-        <div text align="center">
-          click & check their websites.
-        </div>
-        
-        <v-container>
-          <v-row>
-            <v-col></v-col>
-            <v-col>
-              <!--<input type="text" v-model="search" placeholder="search artists"/>-->
-              <v-text-field
-                label="Search Dancers"
-                placeholder="Placeholder"
-                outlined
-                v-model="search"
-              ></v-text-field>
-            </v-col>
-            <v-col></v-col>
-          </v-row>
-        </v-container>
 
-        <div class="d-flex flex-wrap">
-          <div v-for="artist in filteredArtists" :key ="artist.index">
-            <ArtistCard :artist="artist" ></ArtistCard>  <!-- can add class = "ma-1 pa-1" -->
-          </div>
-        </div>
-        
-    </div>
   </v-app>     
 </template>
 
 <script>
-//var i = 0;
-import ArtistCard from '@/components/ArtistCard.vue'
-import EventService from '@/services/EventService.js'
-
 export default {
 
   head() {  //head function (a property of vue-meta), returns an object
@@ -65,32 +31,6 @@ export default {
       
     }
   }, 
-  async asyncData({error}) {
-    try {
-      const response = await EventService.getArtists()
-      return {
-        artists: response.data
-      }
-    } catch (e) {
-        error({statusCode:503, message: "unable to fetch artist data at this point"})
-    }
-  },
-  components: {
-    ArtistCard
-  },
-  data() {
-    return {
-      search: ""
-    }
-  },
-  computed: {
-    filteredArtists: function(){
-      return this.artists.filter((artist) => {
-        return artist.artist_name.toLowerCase().match(this.search.toLowerCase());
-      });
-      
-    }
-  }
 }
 //https://stackoverflow.com/questions/57800048/how-to-enable-dark-mode-with-custom-colors-in-light-theme-in-vuetify
 //You know that you have a groove that no other dancer has in this 
