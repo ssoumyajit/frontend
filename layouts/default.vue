@@ -5,7 +5,7 @@
       <v-row >
         <v-col class="text-center" cols="12" sm="2" >
           <div>
-            <v-btn text class="ma-1" color="black" small to='/'>InmyGroove</v-btn>
+            <v-btn text class="ma-1" color="black" small to='/'>Pass The HipHop</v-btn>
           </div>
         </v-col>
       </v-row>

@@ -3,13 +3,15 @@
     "name": "artists",
     "path": "/artists",
     "component": "/Users/river/Downloads/inmygroove_tech/img/pages/artists/index.vue",
-    "chunkName": "pages/artists/index"
+    "chunkName": "pages/artists/index",
+    "_name": "_1ca40e78"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/river/Downloads/inmygroove_tech/img/pages/index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_46303607"
   },
   {
     "name": "username",
@@ -18,23 +20,27 @@
     "chunkName": "pages/_username",
     "children": [
       {
+        "name": "username-each1teach1",
+        "path": "each1teach1",
+        "component": "/Users/river/Downloads/inmygroove_tech/img/pages/_username/each1teach1/index.vue",
+        "chunkName": "pages/_username/each1teach1/index",
+        "_name": "_0e15f04a"
+      },
+      {
         "name": "username-work",
         "path": "work",
         "component": "/Users/river/Downloads/inmygroove_tech/img/pages/_username/work.vue",
-        "chunkName": "pages/_username/work"
-      },
-      {
-        "name": "username-each1teach1",
-        "path": ":each1teach1",
-        "component": "/Users/river/Downloads/inmygroove_tech/img/pages/_username/_each1teach1/index.vue",
-        "chunkName": "pages/_username/_each1teach1/index"
+        "chunkName": "pages/_username/work",
+        "_name": "_3cd2ee74"
       },
       {
         "name": "username-each1teach1-id",
-        "path": ":each1teach1?/:id",
-        "component": "/Users/river/Downloads/inmygroove_tech/img/pages/_username/_each1teach1/_id.vue",
-        "chunkName": "pages/_username/_each1teach1/_id"
+        "path": "each1teach1/:id",
+        "component": "/Users/river/Downloads/inmygroove_tech/img/pages/_username/each1teach1/_id.vue",
+        "chunkName": "pages/_username/each1teach1/_id",
+        "_name": "_06177d32"
       }
-    ]
+    ],
+    "_name": "_5fe9476a"
   }
 ]

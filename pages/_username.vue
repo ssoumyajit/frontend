@@ -9,7 +9,8 @@
               <!--- vertical and horizontal alignment -->
               <v-layout align-center justify-center>
                   <v-flex xs6>                   
-                        <div class="text-xs-center" align = "center">                          
+                        <div class="text-xs-center" align = "center">  
+                                                    
                               <v-btn rounded outlined class="text-capitalize" :to= "`/${artist.username}/`">About</v-btn>
                               <v-btn rounded outlined class="text-capitalize" :to= "`/${artist.username}/work`"> Work </v-btn>
                               <v-btn rounded outlined class="text-capitalize" :to= "`/${artist.username}/each1teach1`">Each 1 Teach 1</v-btn>                          

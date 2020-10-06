@@ -1,10 +1,15 @@
 <template>
   <v-app>
     <div>
-        <h6 class = "display-1 ma-4 d-flex justify-center ">InmyGroove community</h6>
-        <div text align="center">
-          click & check their websites.
-        </div>
+      <center>
+            <img src = "~/assets/art1.jpeg"  width="60%" alt="In My Groove Community photo"><img>
+            <!--<v-img :src = "art1.jpeg" width="100%" height="80%"  class="centerImage">-->
+            
+      </center>
+      <h6 class = "display-1 ma-4 d-flex justify-center ">Pass The HipHop community</h6>
+      <div text align="center">
+        click & check their websites.
+      </div>
         
         <v-container>
           <v-row>

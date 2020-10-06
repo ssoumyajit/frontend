@@ -6,9 +6,9 @@ import scrollBehavior from './router.scrollBehavior.js'
 const _1ca40e78 = () => interopDefault(import('../pages/artists/index.vue' /* webpackChunkName: "pages/artists/index" */))
 const _46303607 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 const _5fe9476a = () => interopDefault(import('../pages/_username.vue' /* webpackChunkName: "pages/_username" */))
+const _0e15f04a = () => interopDefault(import('../pages/_username/each1teach1/index.vue' /* webpackChunkName: "pages/_username/each1teach1/index" */))
 const _3cd2ee74 = () => interopDefault(import('../pages/_username/work.vue' /* webpackChunkName: "pages/_username/work" */))
-const _e36ddab6 = () => interopDefault(import('../pages/_username/_each1teach1/index.vue' /* webpackChunkName: "pages/_username/_each1teach1/index" */))
-const _7dd57a4d = () => interopDefault(import('../pages/_username/_each1teach1/_id.vue' /* webpackChunkName: "pages/_username/_each1teach1/_id" */))
+const _06177d32 = () => interopDefault(import('../pages/_username/each1teach1/_id.vue' /* webpackChunkName: "pages/_username/each1teach1/_id" */))
 
 // TODO: remove in Nuxt 3
 const emptyFn = () => {}
@@ -39,16 +39,16 @@ export const routerOptions = {
     component: _5fe9476a,
     name: "username",
     children: [{
+      path: "each1teach1",
+      component: _0e15f04a,
+      name: "username-each1teach1"
+    }, {
       path: "work",
       component: _3cd2ee74,
       name: "username-work"
     }, {
-      path: ":each1teach1",
-      component: _e36ddab6,
-      name: "username-each1teach1"
-    }, {
-      path: ":each1teach1?/:id",
-      component: _7dd57a4d,
+      path: "each1teach1/:id",
+      component: _06177d32,
       name: "username-each1teach1-id"
     }]
   }],
